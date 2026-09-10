@@ -1,0 +1,6 @@
+{% load kitten_tags %}
+<article class="kitten-card">
+  <a href="{{ kitten.get_absolute_url }}" class="kitten-photo photo-{{ kitten.gender|lower }}">{% if kitten.photos.first %}<img src="{{ kitten.photos.first.image.url }}" alt="{{ kitten.name }}">{% else %}<span class="cat-silhouette">PAW</span>{% endif %}<span class="status">{{ kitten.get_status_display }}</span></a>
+  <div class="kitten-card-body"><div><p class="kitten-meta">{{ kitten.breed|default:'Maine Coon' }} / {{ kitten.get_gender_display }}</p><h3><a href="{{ kitten.get_absolute_url }}">{{ kitten.name }}</a></h3></div><span class="age">{{ kitten.age_weeks }} wks</span></div>
+  <div class="kitten-card-footer"><strong>${{ kitten.price|floatformat:0 }}</strong><a href="{{ kitten|whatsapp_link:WHATSAPP_NUMBER }}" class="inquire" target="_blank" rel="noopener">Ask about me</a></div>
+</article>
